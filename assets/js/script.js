@@ -1,5 +1,6 @@
 /* Get Our Elements */
 const canvas = document.getElementById("draw");
+
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
@@ -21,7 +22,7 @@ let lastY = 0;
 let hue = 0;
 
 function draw(e) {
-  if (!isDrawing) return; // Check for mouse click
+  if (!isDrawing) return; // Check for mouse right click
   ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
   ctx.beginPath(); //Begin a new path
@@ -49,6 +50,7 @@ function draw(e) {
 canvas.addEventListener("mousedown", (e) => {
   isDrawing = true;
   [lastX, lastY] = [e.offsetX, e.offsetY]; //Mouse cursor's coordinates
+
 });
 
 canvas.addEventListener("mousemove", draw);
@@ -70,3 +72,15 @@ num == 10;
 function addNum(a = 10, b = 20) {
   return a + b;
 }
+
+/* Get our Element */
+const clearBtn = document.getElementById('canvasBtn');
+
+function clearcanvas(){
+  ctx.clearRect(0,0, canvas.width,canvas.height);
+
+}
+
+// Event Listner
+
+clearBtn.addEventListener("click",clearcanvas); // Clear canvas button
